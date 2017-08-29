@@ -35,22 +35,10 @@
         "web": "http://www.stato-ontology.org"
     }],
     "resources": [{
-        "name": "MS_MAF",
-        "title": "MS_MAF",
-        "path": "MS_MAF.csv",
+        "name": "MS_SIRM",
+        "title": "MS_SIRM",
+        "path": "MS_SIRM.csv",
         "schema": {"fields": [
-            {
-                "name": "metabolite_identification",
-                "title": "Metabolite Identity",
-                "description": "the field Metaboite Identity  is meant to hold information such a metabolite database identifier",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://purl.org/obofoundry/obi/OBI:00001232",
-                "constraints": {
-                    "required": "True",
-                    "pattern": "HMBD\\d+"
-                }
-            },
             {
                 "name": "retention_time",
                 "title": "retention time",
@@ -58,6 +46,15 @@
                 "format": " default",
                 "type": "number",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1000894",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "sigint",
+                "title": "signal intensity",
+                "description": "Specify the value of the signal intensity and how it was calculated using one of the following values : NOTE: a signal intensity calculation method SHOULD be reported. A Controlled Vocabulary will be provided and will include the following values: Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite and subtracting baseline (this is the ideal, what we report). Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite without subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) and subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) without subtracting baseline. In NMR signal intensity is the peak area or volume. The method of integration should be stated, and how it was normalized.",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
                 "constraints": {"required": "False"}
             },
             {
@@ -96,13 +93,31 @@
                 "rdfType": "http://semanticscience.org/resource/CHEMINF_000120",
                 "constraints": {"required": "False"}
             },
-                           {
+            {
+                "name": "molecular_fragment",
+                "title": "Molecular Fragment",
+                "description": "",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.org/obofoundry/obi/OBI:00001232",
+                "constraints": {"required": "True"}
+            },
+            {
                 "name": "chemical_formula",
                 "title": "chemical formula",
                 "description": "chemical formula",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://edamontology.org/data_0846",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "isotopomer",
+                "title": "isotopomer",
+                "description": "isotopomer",
+                "format": " default",
+                "type": "integer",
+                "rdfType": "",
                 "constraints": {"required": "False"}
             },
             {
@@ -142,77 +157,8 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "species",
-                "title": "organism",
-                "description": "the latin name in the taxonomic classification",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/OBI_0100026",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "taxid",
-                "title": "Taxon ID",
-                "description": "the taxonomic identifier from the taxonomic classification used to assign a species to the entity",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/IAO_0000578",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "search_engine",
-                "title": "search engine",
-                "description": "the name of the search engine name used to run the identification search",
-                "format": " default",
-                "type": "string",
-                "rdfType": "",
-                "constraints": {
-                    "required": "False",
-                    "enum": [
-                        "",
-                        ""
-                    ]
-                }
-            },
-            {
-                "name": "search_engine_score",
-                "title": "search engine score",
-                "description": "the similarity score returned by the search engine",
-                "format": " default",
-                "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/MS_1001153",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "smallmolecule_abundance_sub",
-                "title": "small molecule abundance sub",
-                "description": "small molecule abundance sub",
-                "format": " default",
-                "type": "number",
-                "rdfType": "",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "smallmolecule_abundance_sdev_sub",
-                "title": "small molecule abundance sub standard deviation",
-                "description": "small molecule abundance sub standard deviation",
-                "format": " default",
-                "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/STATO_0000237",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "smallmolecule_abundance_std_error_sub",
-                "title": "small molecule abundance sub standard error",
-                "description": "small molecule abundance sub standard error",
-                "format": " default",
-                "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/STATO_0000037",
-                "constraints": {"required": "False"}
-            },
-            {
                 "name": "reliability",
-                "title": "small_molecule_identification_reliability",
+                "title": "reliability",
                 "description": "reliability",
                 "format": " default",
                 "type": "string",

@@ -1,0 +1,213 @@
+{
+    "name": "Metabolite Assignment File for NMR-datapackage",
+    "title": "Metabolite Assignment File Data Package",
+    "version": "1.0",
+    "keywords": [
+        "metabolite",
+        "assignment",
+        "identification",
+        "Metabolights",
+        "NMR"
+    ],
+    "licenses": [{
+        "url": "http://opendatacommons.org/licenses/pddl/",
+        "name": "Open Data Commons Public Domain",
+        "version": "1.0",
+        "id": "odc-pddl"
+    }],
+    "sources": [{
+        "name": "University of Oxford e-Research Centre",
+        "web": "http://oerc.ox.ac.uk"
+    }],
+    "contributors": [{
+        "name": "Philippe Rocca-Serra",
+        "email": "proccaserra@gmail.com",
+        "web": "http://www.stato-ontology.org"
+    }],
+    "maintainers": [{
+        "name": "Philippe Rocca-Serra",
+        "email": "proccaserra@gmail.com",
+        "web": "http://www.stato-ontology.org"
+    }],
+    "publishers": [{
+        "name": "Philippe Rocca-Serra",
+        "email": "proccaserra@gmail.com",
+        "web": "http://www.stato-ontology.org"
+    }],
+    "resources": [{
+        "name": "NMR_SIRM",
+        "title": "NMR_SIRM",
+        "path": "NMR_SIRM.csv",
+        "schema": {"fields": [
+            {
+                "name": "metabolite_identification",
+                "title": "Metabolite Identity",
+                "description": "the field Metaboite Identity  is meant to hold information such a metabolite database identifier",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/CHEBI_25212",
+                "constraints": {
+                    "required": "True",
+                    "pattern": "HMBD\\d+"
+                }
+            },
+            {
+                "name": "chemical_formula",
+                "title": "chemical formula",
+                "description": "chemical formula",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://edamontology.org/data_0846",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "smiles",
+                "title": "smiles",
+                "description": "The term SMILES refers to a line notation for encoding molecular structures and specific instances should strictly be called SMILES strings",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://edamontology.org/data_2301",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "inchi",
+                "title": "INCHI: IUPAC International Chemical Identifier",
+                "description": "The IUPAC International Chemical Identifier is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information and to facilitate the search for such information in databases and on the web. Initially developed by IUPAC and NIST from 2000 to 2005, the format and algorithms are non-proprietary",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://edamontology.org/format_1197",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "chemical_shift",
+                "title": "Chemical Shift",
+                "description": "the chemical shift expressed in particle per million (ppm)",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.org/obofoundry/nmrml/NMR:1000223",
+                "constraints": {
+                    "required": "False",
+                    "pattern": "\\d+.\\d+_|-\\d+.\\d+"
+                }
+            },
+            {
+                "name": "multiplicity",
+                "title": "Multiplicity",
+                "description": "Splitting pattern due to scalar couplings",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "connectivity",
+                "title": "Connectivity",
+                "description": "Molecular connectivity inferred from scalar couplings between resonances",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "satellite resonances",
+                "title": "satellite resonances",
+                "description": "Location of satellite peaks and patterns that are used for quantification of site enrichment",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "number of proton correction peak area",
+                "title": "number of proton correction peak area",
+                "description": "number of proton correction peak area The information supplied in this field can be used directly for quantification",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "deconvoluted peak area",
+                "title": "deconvoluted peak area",
+                "description": "deconvoluted peak area",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "peak deconvolution method",
+                "title": "peak deconvolution method",
+                "description": "peak deconvolution method",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "pattern": ""
+                }
+            },
+            {
+                "name": "nmr_acquisition_ref",
+                "title": "NMR acquisition event ref",
+                "description": "a reference to an ISA NMR acquisition event ref",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "isotopomer",
+                "title": "isotopomer",
+                "description": "isotopomer",
+                "format": " default",
+                "type": "integer",
+                "rdfType": "",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "labeled position",
+                "title": "labeled position",
+                "description": "labeled position",
+                "format": " default",
+                "type": "integer",
+                "rdfType": "",
+                "constraints": {"required": "False"}
+            },
+            {
+                "name": "basis of assignment",
+                "title": "basis of assignment",
+                "description": "basis of assignment",
+                "format": " default",
+                "type": "integer",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False",
+                    "enum": [
+                        "chemical shift",
+                        "multiplicity",
+                        "2D cross peak",
+                        "proton-proton",
+                        "homonuclear",
+                        "heteronuclear resonance"
+                    ]
+                }
+            }
+        ]}
+    }]
+}
