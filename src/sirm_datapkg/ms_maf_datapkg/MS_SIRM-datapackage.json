@@ -112,9 +112,9 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "isotopomer",
-                "title": "isotopomer",
-                "description": "isotopomer",
+                "name": "isotopologue",
+                "title": "isotopologue",
+                "description": "isotopologue",
                 "format": " default",
                 "type": "integer",
                 "rdfType": "",
