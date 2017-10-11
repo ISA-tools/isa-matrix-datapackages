@@ -38,7 +38,16 @@
         "name": "MS_SIRM",
         "title": "MS_SIRM",
         "path": "MS_SIRM.csv",
-        "schema": {"fields": [
+        "schema": {"fields": [    
+            {
+                "name": "ms_acquisition_ref",
+                "title": "MS Assay Name",
+                "description": "a reference to an ISA mass spectrometry acquisition event",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
+                "constraints": {"required": "True"}
+            },
             {
                 "name": "retention_time",
                 "title": "retention time",
@@ -49,8 +58,71 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "sigint",
-                "title": "signal intensity",
+                "name": "retention_time_unit",
+                "title": "retention time unit",
+                "description": "Specify the unit used to report the raw signal intensity",
+                "format": " default",
+                "type": "string",
+                "rdfType": "",
+                "constraints": {"required": "False","enum" : ["min","sec"]}
+            },            
+            {
+                "name": "raw_signal_intensity",
+                "title": "raw signal intensity",
+                "description": "Specify the value of the signal intensity and how it was calculated using one of the following values : NOTE: a signal intensity calculation method SHOULD be reported. A Controlled Vocabulary will be provided and will include the following values: Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite and subtracting baseline (this is the ideal, what we report). Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite without subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) and subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) without subtracting baseline. In NMR signal intensity is the peak area or volume. The method of integration should be stated, and how it was normalized.",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {"required": "True"}
+            },
+            {
+                "name": "raw_signal_intensity_unit",
+                "title": "raw signal intensity unit",
+                "description": "Specify the unit used to report the raw signal intensity",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000043",
+                "constraints": {"required": "False","enum" : ["arbitrary unit","other"]}
+            },
+            {
+                "name": "signal_intensity_type",
+                "title": "signal intensity type",
+                "description": "Specify the how the raw signal intensity is calculated",
+                "format": " default",
+                "type": "string",
+                "rdfType": "",
+                "constraints": {"required": "True","enum" : ["raw peak height","raw peak area"]}
+            },
+            {
+                "name": "cluster_id",
+                "title": "cluster identifier",
+                "description": "An identifier applied to molecular entity to indicate that they are linked by shared fragments. (modified from PSI-MS definition)",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1002407",
+                "constraints": {"required": "True"}              
+            },         
+            {
+                "name": "mass_to_charge",
+                "title": "monitored m/z",
+                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
+                "constraints": {"required": "True"}
+            },
+             {
+                "name": "post_collision_mass_to_charge",
+                "title": "post-collision monitored m/z",
+                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
+                "constraints": {"required": "True"}
+            },           
+            {
+                "name": "norm_signal_intensity",
+                "title": "normalized signal intensity",
                 "description": "Specify the value of the signal intensity and how it was calculated using one of the following values : NOTE: a signal intensity calculation method SHOULD be reported. A Controlled Vocabulary will be provided and will include the following values: Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite and subtracting baseline (this is the ideal, what we report). Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite without subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) and subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) without subtracting baseline. In NMR signal intensity is the peak area or volume. The method of integration should be stated, and how it was normalized.",
                 "format": " default",
                 "type": "number",
@@ -58,45 +130,63 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "mass_to_charge",
-                "title": "m/z",
-                "description": "mass to charge (m over z) ratio",
+                "name": "norm_signal_intensity_unit",
+                "title": "raw signal intensity unit",
+                "description": "Specify the unit used to report the raw signal intensity",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000043",
+                "constraints": {"required": "False","enum" : ["arbitrary unit",""]}
+            },
+            {
+                "name": "normalization_type",
+                "title": "normalization type",
+                "description": "Specify the how the normalized signal intensity is calculated",
+                "format": " default",
+                "type": "string",
+                "rdfType": "",
+                "constraints": {"required": "False", "enum" : ["peak height with baseline substraction","peak area with baseline substraction","sum of all peaks in each spectrum equal to 1 normalization","area normalization"]}
+            }, 
+            {
+                "name": "isotopologue",
+                "title": "isotopologue",
+                "description": "isotopologue",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000001",
+                "constraints": {"required": "True"}
+            },
+            {
+                "name": "isotopic_label",
+                "title": "isotopic label",
+                "description": "the name of the isotope used in the tracer molecule",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
+                "constraints": {"required": "True","enum" : ["2H","13C","15N","18O","19F","33Cl","37S"]}
+            },            
+            {
+                "name": "corrected_mass_to_charge",
+                "title": "corrected m/z",
+                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
                 "format": " default",
                 "type": "number",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
-                "constraints": {"required": "False"}
-            },
+                "constraints": {"required": "True"}
+            },               
             {
-                "name": "fragmentation",
-                "title": "fragmentation",
-                "description": "fragmentation",
+                "name": "correction_type",
+                "title": "correction type",
+                "description": "Specify the method used for correcting the mass to charge values",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/MS_1000044",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "modification",
-                "title": "modification",
-                "description": "modification",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/ERO_0001298",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "charge",
-                "title": "charge",
-                "description": "charge",
-                "format": " default",
-                "type": "number",
-                "rdfType": "http://semanticscience.org/resource/CHEMINF_000120",
-                "constraints": {"required": "False"}
-            },
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000003",
+                "constraints": {"required": "True","enum" : ["adduct correction","natural abundance correction","adduct and natural abundance correction"]}
+            },                       
             {
                 "name": "molecular_fragment",
                 "title": "Molecular Fragment",
-                "description": "",
+                "description": "A fragment name, conventionally named using Cx-Cy, where x and y correspond to the carbon number in the metabolite that is being analyzed. x can be 1 or higher and y is lower or equal to n, where n is the total number of carbons of the molecule backbone. For example: glucose has 6 carbons so the complete molecular fragment would be C1-C6. If the indicated fragment is C3-C6 it means that results will refer to the 4 carbons fragment between carbon 3 and carbon 6 of glucose molecule.",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.org/obofoundry/obi/OBI:00001232",
@@ -104,29 +194,29 @@
             },
             {
                 "name": "chemical_formula",
-                "title": "chemical formula",
-                "description": "chemical formula",
+                "title": "empirical formula",
+                "description": "The empirical formula The IUPAC sensu chemical formula about the molecular fragment associated with the m/z position in the mass spectrometry spectrum. The empirical formula of a compound is a chemical compound formula formed by juxtaposition of the atomic symbols with appropriate (integer) subscripts to give the simplest possible formula expressing the composition. MS_1000865 is the identifier for the term in the Mass spectrometry Ontology.",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://edamontology.org/data_0846",
-                "constraints": {"required": "False"}
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000865",
+                "constraints": {"required": "True"}
             },
             {
-                "name": "isotopologue",
-                "title": "isotopologue",
-                "description": "isotopologue",
+                "name": "adduct",
+                "title": "adduct",
+                "description": "adduct ion formula specified by the given value.  http://fiehnlab.ucdavis.edu/staff/kind/Metabolomics/MS-Adduct-Calculator http://dx.doi.org/DOI:10.1016/S1044-0305(99)00089-6 http://www.ncbi.nlm.nih.gov/pubmed/22111785 ]",
                 "format": " default",
-                "type": "integer",
-                "rdfType": "",
-                "constraints": {"required": "False"}
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1002813",
+                "constraints": {"required": "False","pattern":"([[:digit:]{0,1}M([+][:digit:]{0,1}(H|K|(Na)|(Li)|(Cl)|(Br)|(NH3)|(NH4)|(CH3OH)|(IsoProp)|(DMSO)|(FA)|(Hac)|(TFA)|(NaCOOH)|(HCOOH)|(CF3COOH)|(ACN))){0,}([-][:digit:]{0,1}(H|(H2O)|(CH2)|(CH4)|(NH3)|(CO)|(CO2)|(COCH2)|(HCOOH)|(C2H4)|(C4H8)|(C3H2O3)|(C5H8O4)|(C6H10O4)|(C6H10O5)|(C6H8O6))){0,}][:digit:]{0,1}[+-])"}
             },
             {
                 "name": "smiles",
-                "title": "smiles",
+                "title": "SMILES string",
                 "description": "The term SMILES refers to a line notation for encoding molecular structures and specific instances should strictly be called SMILES strings",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://edamontology.org/data_2301",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000868",
                 "constraints": {"required": "False"}
             },
             {
@@ -139,14 +229,14 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "database_identifier",
-                "title": "Database Identifier",
-                "description": "the database identifier minted by the database hosting the chemical identify information",
+                "name": "assignment_type",
+                "title": "assignment type",
+                "description": "Specify the how chemical assignment is made",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/IAO_0000578",
-                "constraints": {"required": "False"}
-            },
+                "rdfType": "", 
+                "constraints": {"required": "True", "enum" : ["direct assignment to internal standard","indirect assignment to internal standard","assignment by database search"]}
+            },                           
             {
                 "name": "database",
                 "title": "database",
@@ -157,31 +247,31 @@
                 "constraints": {"required": "False"}
             },
             {
-                "name": "reliability",
-                "title": "reliability",
-                "description": "reliability",
+                "name": "database_identifier",
+                "title": "Database Identifier",
+                "description": "the database identifier minted by the database hosting the chemical identify information",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/IAO_0000578",
+                "constraints": {"required": "False"}
+            },            
+            {
+                "name": "isotologue abundance relative concentration",
+                "title": "isotologue abundance relative concentration",
+                "description": "isotologue abundance relative concentration (also known as 'percentage isotopologue enrichment)",
                 "format": " default",
                 "type": "string",
                 "rdfType": "",
-                "constraints": {"required": "False"}
+                "constraints": {"required": "True"}
             },
-            {
-                "name": "uri",
-                "title": "uri",
-                "description": "uri",
-                "format": " uri",
-                "type": "string",
-                "rdfType": "http://edamontology.org/data_1047",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "ms_acquisition_ref",
-                "title": "MS acquisition event ref",
-                "description": "a reference to an ISA mass spectrometry acquisition event ref",
+             {
+                "name": "concentration_unit",
+                "title": "concentration unit",
+                "description": "Specify the unit used to report the relative abundance",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
-                "constraints": {"required": "False"}
+                "rdfType": "http://purl.obolibrary.org/obo/UO_0000051",
+                "constraints": {"required": "False","enum": ["",""]}
             }
         ]}
     }]
