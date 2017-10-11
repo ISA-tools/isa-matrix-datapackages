@@ -1,5 +1,5 @@
-metabolite_identification,sample_ref,sigint,mass_to_charge,molecular_fragment,chemical_formula,smiles,inchi,isotopologue,database identifier,database,reliability,ms_acquisition_ref
-HMDB00190,mesa.rack1.1,284,0.002669267,,,,,,,,,
-HMDB00191,mesa.rack1.1,285,0.002669267,,,,,,,,,
-HMDB00192,mesa.rack1.1,294,0.002669267,,,,,,,,,
-HMDB00193,mesa.rack1.1,300,0.002669267,,,,,,,,,
+ms_acquisition_ref,retention_time,retention_time_unit,raw_signal_intensity,raw_signal_intensity_unit,intensity_type,mass_to_charge,cluster_id,norm_signal_intensity,norm_signal_intensity_unit,normalization_type,isotopologue,isotopic_label,adduct_formula,corrected_mass_to_charge,correction_type,molecular_fragment,assignment,assignment_type,chemical_formula,smiles,inchi,database identifier,database,isotologue_abundance_relative_concentration,concentration_unit
+data_acquisition_1,2.57,min,284,arbitrary_unit,peak intensity,0.002669267,,,arbitrary_unit,area normalization,13C0,13C,[-H+]-,,adduct and natural abundance correction,,(S)-Methylmalonic-13C0[-H+]-,direct assignment to internal standard,,,,HMDB00190,HMDB,,
+data_acquisition_1,2.57,min,285,arbitrary_unit,peak intensity,0.002669267,,,arbitrary_unit,area normalization,13C4,13C,[-H+]-,,adduct and natural abundance correction,,(S)-Methylmalonic-13C4[-H+]-,direct assignment to internal standard,,,,HMDB00191,HMDB,,
+data_acquisition_1,20.35,min,294,arbitrary_unit,peak intensity,0.002669267,,,arbitrary_unit,area normalization,13C3,13C,[-H+]-,,adduct and natural abundance correction,,1-Pyrroline-2-carboxylic-13C3[-H+]-,direct assignment to internal standard,,,,HMDB00192,HMDB,,
+data_acquisition_1,36.19,min,300,arbitrary_unit,peak intensity,0.002669267,,,arbitrary_unit,area normalization,13C3,13C,[-H+]-,,adduct and natural abundance correction,,13BPG-13C3[-H+]-,direct assignment to internal standard,,,,HMDB00193,HMDB,,

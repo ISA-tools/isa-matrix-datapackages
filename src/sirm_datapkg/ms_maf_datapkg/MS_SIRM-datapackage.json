@@ -202,8 +202,8 @@
                 "constraints": {"required": "True"}
             },
             {
-                "name": "adduct",
-                "title": "adduct",
+                "name": "adduct_formula",
+                "title": "adduct formula",
                 "description": "adduct ion formula specified by the given value.  http://fiehnlab.ucdavis.edu/staff/kind/Metabolomics/MS-Adduct-Calculator http://dx.doi.org/DOI:10.1016/S1044-0305(99)00089-6 http://www.ncbi.nlm.nih.gov/pubmed/22111785 ]",
                 "format": " default",
                 "type": "string",
@@ -234,7 +234,7 @@
                 "description": "Specify the how chemical assignment is made",
                 "format": " default",
                 "type": "string",
-                "rdfType": "", 
+                "rdfType": "http://purl.obolibrary.org/obo/MI_2131", 
                 "constraints": {"required": "True", "enum" : ["direct assignment to internal standard","indirect assignment to internal standard","assignment by database search"]}
             },                           
             {
@@ -256,12 +256,12 @@
                 "constraints": {"required": "False"}
             },            
             {
-                "name": "isotologue abundance relative concentration",
+                "name": "isotologue_abundance_relative_concentration",
                 "title": "isotologue abundance relative concentration",
                 "description": "isotologue abundance relative concentration (also known as 'percentage isotopologue enrichment)",
                 "format": " default",
                 "type": "string",
-                "rdfType": "",
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000004",
                 "constraints": {"required": "True"}
             },
              {
