@@ -49,6 +49,24 @@
                 "constraints": {"required": "True"}
             },
             {
+                "name": "isotopic_tracer",
+                "title": "isotopic tracer",
+                "description": "the name of the isotopic tracer molecule used in the labeling experiment",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
+                "constraints": {"required": "True"}
+            },
+            {
+                "name": "tracer abundance",
+                "title": "tracer molecule abundance",
+                "description": "The proportion of tracer molecule to the parent molecule, also known as isotopic purity",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
+                "constraints": {"required": "True"}
+            },            
+            {
                 "name": "retention_time",
                 "title": "retention time",
                 "description": "the retention time on the chromatography column, relevant only for LC-MS and GC-MS application",
@@ -72,7 +90,7 @@
                 "description": "Specify the value of the signal intensity and how it was calculated using one of the following values : NOTE: a signal intensity calculation method SHOULD be reported. A Controlled Vocabulary will be provided and will include the following values: Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite and subtracting baseline (this is the ideal, what we report). Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite without subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) and subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) without subtracting baseline. In NMR signal intensity is the peak area or volume. The method of integration should be stated, and how it was normalized.",
                 "format": " default",
                 "type": "number",
-                "rdfType": "",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
                 "constraints": {"required": "True"}
             },
             {
@@ -132,7 +150,7 @@
             {
                 "name": "norm_signal_intensity_unit",
                 "title": "raw signal intensity unit",
-                "description": "Specify the unit used to report the raw signal intensity",
+                "description": "Specify the unit used to report the normalized signal intensity",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1000043",
@@ -144,7 +162,7 @@
                 "description": "Specify the how the normalized signal intensity is calculated",
                 "format": " default",
                 "type": "string",
-                "rdfType": "",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1001484",
                 "constraints": {"required": "False", "enum" : ["peak height with baseline substraction","peak area with baseline substraction","sum of all peaks in each spectrum equal to 1 normalization","area normalization"]}
             }, 
             {
@@ -153,7 +171,7 @@
                 "description": "isotopologue",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000001",
+                    "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000001",
                 "constraints": {"required": "True"}
             },
             {

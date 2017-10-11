@@ -39,47 +39,17 @@
         "title": "NMR_SIRM",
         "path": "NMR_SIRM.csv",
         "schema": {"fields": [
-            {
-                "name": "metabolite_identification",
-                "title": "Metabolite Identity",
-                "description": "the field Metaboite Identity  is meant to hold information such a metabolite database identifier",
+             {
+                "name": "nmr_acquisition_ref",
+                "title": "NMR acquisition event ref",
+                "description": "a reference to an ISA NMR acquisition event ref",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/CHEBI_25212",
-                "constraints": {
-                    "required": "True",
-                    "pattern": "HMBD\\d+"
-                }
-            },
-            {
-                "name": "chemical_formula",
-                "title": "chemical formula",
-                "description": "chemical formula",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://edamontology.org/data_0846",
+                "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
                 "constraints": {"required": "False"}
-            },
+            },       
             {
-                "name": "smiles",
-                "title": "smiles",
-                "description": "The term SMILES refers to a line notation for encoding molecular structures and specific instances should strictly be called SMILES strings",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://edamontology.org/data_2301",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "inchi",
-                "title": "INCHI: IUPAC International Chemical Identifier",
-                "description": "The IUPAC International Chemical Identifier is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information and to facilitate the search for such information in databases and on the web. Initially developed by IUPAC and NIST from 2000 to 2005, the format and algorithms are non-proprietary",
-                "format": " default",
-                "type": "string",
-                "rdfType": "http://edamontology.org/format_1197",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "chemical_shift",
+                "name": "chemical_shift_ppm",
                 "title": "Chemical Shift",
                 "description": "the chemical shift expressed in particle per million (ppm)",
                 "format": " default",
@@ -115,7 +85,7 @@
                 }
             },
             {
-                "name": "satellite resonances",
+                "name": "satellite_resonances",
                 "title": "satellite resonances",
                 "description": "Location of satellite peaks and patterns that are used for quantification of site enrichment",
                 "format": " default",
@@ -127,9 +97,9 @@
                 }
             },
             {
-                "name": "number of proton correction peak area",
+                "name": "nb_proton_correction_peak_area",
                 "title": "number of proton correction peak area",
-                "description": "number of proton correction peak area The information supplied in this field can be used directly for quantification",
+                "description": "number of proton correction peak area. The information supplied in this field can be used directly for quantification",
                 "format": " default",
                 "type": "number",
                 "rdfType": "",
@@ -139,7 +109,7 @@
                 }
             },
             {
-                "name": "deconvoluted peak area",
+                "name": "deconvoluted_peak_area",
                 "title": "deconvoluted peak area",
                 "description": "deconvoluted peak area",
                 "format": " default",
@@ -151,51 +121,84 @@
                 }
             },
             {
-                "name": "peak deconvolution method",
+                "name": "peak_deconvolution_method",
                 "title": "peak deconvolution method",
                 "description": "peak deconvolution method",
                 "format": " default",
                 "type": "number",
-                "rdfType": "",
+                "rdfType": "http://purl.obolibrary.org/obo/NCIT_C47929",
                 "constraints": {
                     "required": "False",
-                    "pattern": ""
+                    "enum": ["",""]
                 }
             },
             {
-                "name": "nmr_acquisition_ref",
-                "title": "NMR acquisition event ref",
-                "description": "a reference to an ISA NMR acquisition event ref",
+                "name": "mean_post_rltv_conc_estimate",
+                "title": "mean_post_rltv_conc_estimate",
+                "description": "mean post relative concentration estimate as generated by BATMAN software",
+                "format": " default",
+                "type": "number",
+                "rdfType": "",
+                "constraints": {
+                    "required": "False"
+                }
+            },
+            {
+                "name": "95pc_upr_bound",
+                "title": "95pc upr bound",
+                "description": "95pc upper credible bound",
+                "format": " default",
+                "type": "number",
+                "rdfType": ["http://purl.obolibrary.org/obo/STATO_0000314","http://purl.obolibrary.org/obo/STATO_0000456"],
+                "constraints": {
+                    "required": "False"
+                }
+            },
+            {
+                "name": "95pc_lwr_bound",
+                "title": "95pc lwr bound",
+                "description": "95pc lower credible bound",
+                "format": " default",
+                "type": "number",
+                "rdfType":  ["http://purl.obolibrary.org/obo/STATO_0000315","http://purl.obolibrary.org/obo/STATO_0000456"],
+                "constraints": {
+                    "required": "False"
+                }
+            },            
+            {
+                "name": "chemical_formula",
+                "title": "empirical formula",
+                "description": "The empirical formula The IUPAC sensu chemical formula about the molecular fragment associated with the m/z position in the mass spectrometry spectrum. The empirical formula of a compound is a chemical compound formula formed by juxtaposition of the atomic symbols with appropriate (integer) subscripts to give the simplest possible formula expressing the composition. MS_1000865 is the identifier for the term in the Mass spectrometry Ontology.",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
-                "constraints": {"required": "False"}
-            },
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000865",
+                "constraints": {"required": "True"}
+            },            
+               {
+                   "name": "isotopomer",
+                   "title": "isotopomer",
+                   "description": "isotopomer",
+                   "format": " default",
+                   "type": "integer",
+                   "rdfType": "",
+                   "constraints": {"required": "False"}
+               },
             {
-                "name": "isotopomer",
-                "title": "isotopomer",
-                "description": "isotopomer",
-                "format": " default",
-                "type": "integer",
-                "rdfType": "",
-                "constraints": {"required": "False"}
-            },
-            {
-                "name": "labeled position",
+                "name": "labeled_position",
                 "title": "labeled position",
                 "description": "labeled position",
                 "format": " default",
                 "type": "integer",
                 "rdfType": "",
                 "constraints": {"required": "False"}
-            },
+            },            
             {
-                "name": "basis of assignment",
-                "title": "basis of assignment",
+                "name": "assignment_type",
+                "title": "assignment type",
                 "description": "basis of assignment",
                 "format": " default",
                 "type": "integer",
-                "rdfType": "",
+                "rdfType": "http://purl.obolibrary.org/obo/MI_2131",
                 "constraints": {
                     "required": "False",
                     "enum": [

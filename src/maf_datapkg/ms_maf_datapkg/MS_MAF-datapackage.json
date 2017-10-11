@@ -96,7 +96,7 @@
                 "rdfType": "http://semanticscience.org/resource/CHEMINF_000120",
                 "constraints": {"required": "False"}
             },
-                           {
+            {
                 "name": "chemical_formula",
                 "title": "chemical formula",
                 "description": "chemical formula",
