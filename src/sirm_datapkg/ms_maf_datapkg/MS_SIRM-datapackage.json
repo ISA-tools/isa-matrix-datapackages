@@ -51,20 +51,20 @@
             {
                 "name": "isotopic_tracer",
                 "title": "isotopic tracer",
-                "description": "the name of the isotopic tracer molecule used in the labeling experiment",
+                "description": "the name of the isotopic tracer molecule used in the labeling experiment. The chemical name of the tracer molecule e.g. 'Uniformly enriched 13C-Glucose' or '15N Glutamine'. IUPAC name is preferred: D-(13C6)Glucose instead of 'Uniformly Labelled 13C-Glucose'. This assumes that both forms of glucose are present and equally enriched",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
-                "constraints": {"required": "True"}
+                "constraints": {"required": "False"}
             },
             {
-                "name": "tracer abundance",
-                "title": "tracer molecule abundance",
+                "name": "tracer_abundance_pc",
+                "title": "tracer molecule abundance in percent",
                 "description": "The proportion of tracer molecule to the parent molecule, also known as isotopic purity",
                 "format": " default",
-                "type": "string",
+                "type": "number",
                 "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
-                "constraints": {"required": "True"}
+                "constraints": {"required": "False"}
             },            
             {
                 "name": "retention_time",
@@ -84,6 +84,33 @@
                 "rdfType": "",
                 "constraints": {"required": "False","enum" : ["min","sec"]}
             },            
+            {
+                "name": "cluster_id",
+                "title": "cluster identifier",
+                "description": "An identifier applied to molecular entity to indicate that they are linked by shared fragments. (modified from PSI-MS definition)",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1002407",
+                "constraints": {"required": "False"}              
+            },         
+            {
+                "name": "mass_to_charge",
+                "title": "monitored m/z",
+                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
+                "constraints": {"required": "True"}
+            },
+             {
+                "name": "post_collision_mass_to_charge",
+                "title": "post-collision monitored m/z",
+                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
+                "format": " default",
+                "type": "number",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
+                "constraints": {"required": "False"}
+            },
             {
                 "name": "raw_signal_intensity",
                 "title": "raw signal intensity",
@@ -111,33 +138,34 @@
                 "rdfType": "",
                 "constraints": {"required": "True","enum" : ["raw peak height","raw peak area"]}
             },
-            {
-                "name": "cluster_id",
-                "title": "cluster identifier",
-                "description": "An identifier applied to molecular entity to indicate that they are linked by shared fragments. (modified from PSI-MS definition)",
+           {
+                "name": "corr_signal_intensity",
+                "title": "corrected signal intensity",
+                "description": "Specify the value of the signal intensity and how it was calculated using one of the following values : NOTE: a signal intensity calculation method SHOULD be reported. A Controlled Vocabulary will be provided and will include the following values: Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite and subtracting baseline (this is the ideal, what we report). Signal intensity of all m/z values after integrating the whole peak of a concrete metabolite without subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) and subtracting baseline. Signal intensity of all m/z values at the maximum of the peak (also known as maximum signal intensity) without subtracting baseline. In NMR signal intensity is the peak area or volume. The method of integration should be stated, and how it was normalized.",
                 "format": " default",
                 "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/MS_1002407",
-                "constraints": {"required": "True"}              
-            },         
-            {
-                "name": "mass_to_charge",
-                "title": "monitored m/z",
-                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
-                "format": " default",
-                "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
-                "constraints": {"required": "True"}
+                "rdfType": "",
+                "constraints": {"required": "False"}
             },
-             {
-                "name": "post_collision_mass_to_charge",
-                "title": "post-collision monitored m/z",
-                "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
+            {
+                "name": "corr_signal_intensity_unit",
+                "title": "corr signal intensity unit",
+                "description": "Specify the unit used to report the corrected signal intensity",
                 "format": " default",
-                "type": "number",
-                "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
-                "constraints": {"required": "True"}
-            },           
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1000043",
+                "constraints": {"required": "False","enum" : ["arbitrary unit",""]}
+            },
+            {
+                "name": "signal_intensity_correction_type",
+                "title": "signal intensity correction type",
+                "description": "Specify the how the normalized signal intensity is calculated",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MS_1001484",
+                "constraints": {"required": "False", "enum" : ["ion suppression bias correction", "isotopic natural abundance correction"]}
+            },
+
             {
                 "name": "norm_signal_intensity",
                 "title": "normalized signal intensity",
@@ -163,7 +191,7 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1001484",
-                "constraints": {"required": "False", "enum" : ["peak height with baseline substraction","peak area with baseline substraction","sum of all peaks in each spectrum equal to 1 normalization","area normalization"]}
+                "constraints": {"required": "False", "enum" : ["peak height with baseline substraction","peak area with baseline substraction","sum of all peaks in each spectrum equal to 1 normalization","area normalization","total ion count normalization", "sum of isotopologue normalization"]}
             }, 
             {
                 "name": "isotopologue",
@@ -193,13 +221,13 @@
                 "constraints": {"required": "True"}
             },               
             {
-                "name": "correction_type",
+                "name": "m_to_z_correction_type",
                 "title": "correction type",
                 "description": "Specify the method used for correcting the mass to charge values",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000003",
-                "constraints": {"required": "True","enum" : ["adduct correction","natural abundance correction","adduct and natural abundance correction"]}
+                "constraints": {"required": "True","enum" : ["adduct correction","isotopic natural abundance correction","adduct and isotopic natural abundance correction"]}
             },                       
             {
                 "name": "molecular_fragment",
@@ -253,8 +281,17 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MI_2131", 
-                "constraints": {"required": "True", "enum" : ["direct assignment to internal standard","indirect assignment to internal standard","assignment by database search"]}
-            },                           
+                "constraints": {"required": "True", "enum" : ["direct assignment to internal standard","indirect assignment to internal standard","assignment by database search", "assignment by isotopologue clique method     ", "other"]}
+            },
+            {
+                "name": "assignment_confidence",
+                "title": "assignment confidence strength",
+                "description": "indicate the confidence score for the assignment",
+                "format": " default",
+                "type": "string",
+                "rdfType": "http://purl.obolibrary.org/obo/MI_2131", 
+                "constraints": {"required": "False", "enum": ["high","moderate","average","low","poor"]}
+            },              
             {
                 "name": "database",
                 "title": "database",
@@ -283,13 +320,13 @@
                 "constraints": {"required": "True"}
             },
              {
-                "name": "concentration_unit",
-                "title": "concentration unit",
-                "description": "Specify the unit used to report the relative abundance",
+                "name": "abundance_unit",
+                "title": "abundance unit",
+                "description": "Specify the unit used to report the relative abundance: this corresponds to an amount per unit of normalizer, which can be anything such as 'amount per mL plasma or other biofluid', 'amount per mg protein', 'amount per mole DNA','amount per number of cell', 'other'",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/UO_0000051",
-                "constraints": {"required": "False","enum": ["",""]}
+                "constraints": {"required": "False","enum": ['amount per mL plasma or other biofluid', 'amount per mg protein', 'amount per mole DNA','amount per number of cell', 'other']}
             }
         ]}
     }]
