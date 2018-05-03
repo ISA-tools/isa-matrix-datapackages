@@ -40,7 +40,7 @@
         "path": "MS_SIRM.csv",
         "schema": {"fields": [    
             {
-                "name": "ms_acquisition_ref",
+                "name": "ms_assay_name",
                 "title": "MS Assay Name",
                 "description": "a reference to an ISA mass spectrometry acquisition event",
                 "format": " default",
@@ -54,7 +54,7 @@
                 "description": "the name of the isotopic tracer molecule used in the labeling experiment. The chemical name of the tracer molecule e.g. 'Uniformly enriched 13C-Glucose' or '15N Glutamine'. IUPAC name is preferred: D-(13C6)Glucose instead of 'Uniformly Labelled 13C-Glucose'. This assumes that both forms of glucose are present and equally enriched",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000002",
+                "rdfType": "http://purl.obolibrary.org/obo/MSIO_0000031",
                 "constraints": {"required": "False"}
             },
             {
@@ -102,7 +102,7 @@
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
                 "constraints": {"required": "True"}
             },
-             {
+            {
                 "name": "post_collision_mass_to_charge",
                 "title": "post-collision monitored m/z",
                 "description": "the mass to charge (m over z) ratio being monitored and to which the signal intensity corresponds",
@@ -159,7 +159,7 @@
             {
                 "name": "signal_intensity_correction_type",
                 "title": "signal intensity correction type",
-                "description": "Specify the how the normalized signal intensity is calculated",
+                "description": "Specify the how the corrected signal intensity is calculated",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1001484",
@@ -177,7 +177,7 @@
             },
             {
                 "name": "norm_signal_intensity_unit",
-                "title": "raw signal intensity unit",
+                "title": "normalized signal intensity unit",
                 "description": "Specify the unit used to report the normalized signal intensity",
                 "format": " default",
                 "type": "string",
@@ -199,7 +199,7 @@
                 "description": "isotopologue",
                 "format": " default",
                 "type": "string",
-                    "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000001",
+                    "rdfType": "http://purl.obolibrary.org/obo/MSIO_0000034",
                 "constraints": {"required": "True"}
             },
             {
@@ -226,7 +226,7 @@
                 "description": "Specify the method used for correcting the mass to charge values",
                 "format": " default",
                 "type": "string",
-                "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000003",
+                "rdfType": "",
                 "constraints": {"required": "True","enum" : ["adduct correction","isotopic natural abundance correction","adduct and isotopic natural abundance correction"]}
             },                       
             {
@@ -281,7 +281,7 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MI_2131", 
-                "constraints": {"required": "True", "enum" : ["direct assignment to internal standard","indirect assignment to internal standard","assignment by database search", "assignment by isotopologue clique method     ", "other"]}
+                "constraints": {"required": "True", "enum" : ["direct assignment to standard","indirect assignment to standard","assignment by database search", "assignment by isotopologue clique method", "other"]}
             },
             {
                 "name": "assignment_confidence",
@@ -311,9 +311,9 @@
                 "constraints": {"required": "False"}
             },            
             {
-                "name": "isotologue_abundance_relative_concentration",
-                "title": "isotologue abundance relative concentration",
-                "description": "isotologue abundance relative concentration (also known as 'percentage isotopologue enrichment)",
+                "name": "isotopologue_abundance_relative_concentration",
+                "title": "isotopologue abundance relative concentration",
+                "description": "isotopologue abundance relative concentration (also known as 'percentage isotopologue enrichment)",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000004",
