@@ -41,12 +41,12 @@
         "schema": {"fields": [
              {
                 "name": "nmr_acquisition_ref",
-                "title": "NMR acquisition event ref",
+                "title": "NMR Assay Name",
                 "description": "a reference to an ISA NMR acquisition event ref",
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/OBI_0600013",
-                "constraints": {"required": "False"}
+                "constraints": {"required": "True"}
             },       
             {
                 "name": "chemical_shift_ppm",
@@ -56,7 +56,7 @@
                 "type": "number",
                 "rdfType": "http://purl.org/obofoundry/nmrml/NMR:1000223",
                 "constraints": {
-                    "required": "False",
+                    "required": "True",
                     "pattern": "\\d+.\\d+_|-\\d+.\\d+"
                 }
             },
@@ -229,7 +229,7 @@
                    "format": " default",
                    "type": "integer",
                    "rdfType": "",
-                   "constraints": {"required": "False"}
+                   "constraints": {"required": "True"}
                },
             {
                 "name": "labeled_position",

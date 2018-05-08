@@ -40,7 +40,7 @@
         "path": "MS_SIRM.csv",
         "schema": {"fields": [    
             {
-                "name": "ms_assay_name",
+                "name": "ms_acquisition_ref",
                 "title": "MS Assay Name",
                 "description": "a reference to an ISA mass spectrometry acquisition event",
                 "format": " default",
@@ -165,7 +165,6 @@
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1001484",
                 "constraints": {"required": "False", "enum" : ["ion suppression bias correction", "isotopic natural abundance correction"]}
             },
-
             {
                 "name": "norm_signal_intensity",
                 "title": "normalized signal intensity",
@@ -203,8 +202,8 @@
                 "constraints": {"required": "True"}
             },
             {
-                "name": "isotopic_label",
-                "title": "isotopic label",
+                "name": "isotope",
+                "title": "isotope",
                 "description": "the name of the isotope used in the tracer molecule",
                 "format": " default",
                 "type": "string",
@@ -218,7 +217,7 @@
                 "format": " default",
                 "type": "number",
                 "rdfType": "http://purl.obolibrary.org/obo/MS_1000040",
-                "constraints": {"required": "True"}
+                "constraints": {"required": "False"}
             },               
             {
                 "name": "m_to_z_correction_type",
@@ -227,7 +226,7 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "",
-                "constraints": {"required": "True","enum" : ["adduct correction","isotopic natural abundance correction","adduct and isotopic natural abundance correction"]}
+                "constraints": {"required": "False","enum" : ["adduct correction","isotopic natural abundance correction","adduct and isotopic natural abundance correction"]}
             },                       
             {
                 "name": "molecular_fragment",
@@ -281,7 +280,7 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/MI_2131", 
-                "constraints": {"required": "True", "enum" : ["direct assignment to standard","indirect assignment to standard","assignment by database search", "assignment by isotopologue clique method", "other"]}
+                "constraints": {"required": "False", "enum" : ["direct assignment to standard","indirect assignment to standard","assignment by database search", "assignment by isotopologue clique method", "other"]}
             },
             {
                 "name": "assignment_confidence",
@@ -317,7 +316,7 @@
                 "format": " default",
                 "type": "string",
                 "rdfType": "http://purl.obolibrary.org/obo/SIRM_0000004",
-                "constraints": {"required": "True"}
+                "constraints": {"required": "False"}
             },
              {
                 "name": "abundance_unit",
